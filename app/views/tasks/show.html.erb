@@ -1,3 +1,52 @@
-<h1>Tasks#show</h1>
-<p>ここに個別タスクの詳細を表示します。</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h2 class="mb-0">タスク詳細</h2>
+          <span class="badge bg-<%= @task.status == 'completed' ? 'success' : @task.status == 'in_progress' ? 'warning' : 'secondary' %> fs-6">
+            <%= case @task.status
+                when 'pending'
+                  '未着手'
+                when 'in_progress'
+                  '進行中'
+                when 'completed'
+                  '完了'
+                end %>
+          </span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title mb-3"><%= @task.title %></h3>
+          
+          <div class="mb-4">
+            <h5 class="fw-bold">説明</h5>
+            <p class="text-muted"><%= @task.description.present? ? simple_format(@task.description) : "説明なし" %></p>
+          </div>
 
+          <div class="mb-4">
+            <h5 class="fw-bold">作成日時</h5>
+            <p class="text-muted"><%= @task.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+          </div>
+
+          <% if @task.updated_at != @task.created_at %>
+            <div class="mb-4">
+              <h5 class="fw-bold">更新日時</h5>
+              <p class="text-muted"><%= @task.updated_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+            </div>
+          <% end %>
+        </div>
+        <div class="card-footer bg-transparent">
+          <div class="d-flex justify-content-between">
+            <%= link_to "一覧に戻る", tasks_path, class: "btn btn-secondary" %>
+            <div>
+              <%= link_to "編集", edit_task_path(@task), class: "btn btn-primary me-2" %>
+              <%= link_to "削除", task_path(@task), method: :delete, 
+                  data: { confirm: "本当に削除しますか？" }, 
+                  class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
