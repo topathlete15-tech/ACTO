@@ -169,7 +169,7 @@ header {
 }
 
 // ページ上部のMATOタイトル（ヘッダー用）
-h1:first-of-type {
+.main-title {
     position: absolute;
     top: 20px;
     left: 30px;

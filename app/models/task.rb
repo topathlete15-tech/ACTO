@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :user
+  belongs_to :category, optional: true
+
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
@@ -9,3 +11,4 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :description, length: { maximum: 1000 }
 end
+
