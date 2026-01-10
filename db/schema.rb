@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_04_113839) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_10_193041) do
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,8 +58,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_04_113839) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "title", null: false
+    t.text "description", null: false
     t.integer "user_id", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
@@ -82,12 +82,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_04_113839) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
+  add_foreign_key "comment_favorites", "comments"
+  add_foreign_key "comment_favorites", "users"
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "tasks"
   add_foreign_key "favorites", "users"
+  add_foreign_key "relationships", "users", column: "followed_id"
+  add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
 end
