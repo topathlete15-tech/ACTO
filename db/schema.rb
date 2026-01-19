@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_10_193041) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_19_012328) do
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -76,7 +76,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_10_193041) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "profile_image_id"
-    t.string "user_name", null: false
     t.text "profile"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -84,7 +83,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_10_193041) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
   add_foreign_key "comment_favorites", "comments"
