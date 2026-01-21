@@ -6,7 +6,7 @@
 **「思考を止めて、行動を開始する」**
 
 ACTOは、個人の実行力を最大化するためのタスク実行ツールです。
-複雑な目標設定や計画作りは一切排除。「やるべきこと」を書き出し、オレンジを基調とした直感的なUIで**「未着手・進行中・完了」**のステータスを切り替えていくことだけに集中させます。
+複雑な目標設定や計画作りは一切排除。「やるべきこと」を書き出し、オレンジを基調とした直感的なUIで「未着手・進行中・完了」のステータスを切り替えていくことだけに集中させます。
 
 ### サイトテーマ
 
@@ -61,25 +61,10 @@ ACTOは、これらの原因となる「目標（Mission）」の管理機能を
 | **タスクメモ** | 作業中の気づきや、次回への申し送り事項を記録。自分専用のメモ帳として活用します。 |
 | **重要マーク** | 特に優先すべきタスクや、完了して嬉しかったタスクに視覚的なアクセントを付与します。 |
 
-使用技術
-Backend
-Ruby 3.2.9
+開発環境 
+・OS：Mac + ターミナル　または　Windows11 + Git Bash　または　Windows10 + Git Bash
+・言語：Ruby , HTML, SCSS 
+・フレームワーク：Ruby on Rails
+・JSライブラリ：Hotwire, Importmap 
+・データベース：SQLite3 
 
-Ruby on Rails 7.1.6
-
-Frontend
-Bootstrap 5.3
-
-Hotwire (Turbo & Stimulus)
-
-Importmap (Node.js不要の資産管理)
-
-SCSS (sassc-rails)
-
-Database
-SQLite3 (Development / Test / Production)
-
-※本番環境も含め、軽量かつ堅牢なSQLite3で構成されています。
-
-Infrastructure / DevOps
-Docker
